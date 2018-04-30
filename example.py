@@ -16,8 +16,8 @@ class TimeInterval:
 	def _get_default_begin(cls):
 		return cls.DEFAULT_BEGIN
 
-	@classmethod
-	def _get_default_end(cls):
+	@staticmethod
+	def _get_default_end():
 		return datetime.now()
 
 if __name__ == '__main__':
