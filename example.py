@@ -1,7 +1,17 @@
 from datetime import datetime
 import sys
+from abc import ABCMeta, abstractmethod
 
-class TimeInterval:
+class AbsctractTimeAmount(metaclass=ABCMeta):
+
+	@abstractmethod
+	def get_length(self):
+		pass
+
+	def enough_for(self, another_delta):
+		return self.get_length >= another_delta
+
+class TimeInterval():
 	DEFAULT_BEGIN = datetime(1970, 1, 1)
 
 	def __init__(self, begin=None, end=None):
@@ -12,6 +22,16 @@ class TimeInterval:
 
 		self._begin = begin
 		self._end = end
+
+	def __repr__(self):
+		return "{namespace}.TimeInterval(begin='{begin}', end='{end}')".format(
+			namespace = __name__,
+			begin = self._begin,
+			end = self._end
+		)
+
+	def __str__(self):
+		return "{} -> {}".format(self._begin, self._end)
 
 	@classmethod
 	def _get_default_begin(cls):
@@ -46,3 +66,6 @@ if __name__ == '__main__':
 	interval.end = datetime(2005, 10, 31)
 	print(interval.begin)
 	print(interval.end)
+	print()
+	print(repr(interval))
+	print(interval)
