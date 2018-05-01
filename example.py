@@ -4,9 +4,9 @@ from abc import ABCMeta, abstractmethod
 
 class AbsctractTimeAmount(metaclass=ABCMeta):
 
-	@abstractmethod
+	@abstractmethod # -
 	def get_length(self):
-		pass
+		pass # raise NotImplementedError
 
 	def enough_for(self, another_delta):
 		return self.get_length >= another_delta
